@@ -18,7 +18,6 @@ public class Post implements Serializable {
     private Integer id;
 
     @NotBlank
-    @Column(name = "test")
     private String titulo;
 
     @NotBlank

@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog JFB</title>
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
 
 </head>
 
@@ -23,7 +22,7 @@
 
     <section>
         <div class="container" style="width:60%; padding-bottom: 30;">
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb" style="margin-top: 20px;">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">Posts</li>
                 </ol>
@@ -35,7 +34,10 @@
                     <span th:text="${posts.data}"></span>
                 </div>
                 <div class="card-body">
-                    <a href="#"><h5 class="card-title" th:text="${posts.titulo}">Titulo</h5></a>
+                    <a th:href="${(#mvc.url('PC#getPostDetails').arg(0, posts.id)).build()}">
+                        <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span
+                                th:text="${posts.titulo}"></span></h4>
+                    </a>
                     <p class="card-text" th:text="${#strings.abbreviate(posts.texto, 200)}">texto</p>
                 </div>
             </div>
