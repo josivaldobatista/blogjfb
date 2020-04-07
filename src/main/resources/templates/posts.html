@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -20,25 +20,26 @@
             <span class="navbar-brand mb-0 h1">Blog JFB</span>
         </nav>
     </header>
+
     <section>
         <div class="container" style="width:60%; padding-bottom: 30;">
-
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">Posts</li>
                 </ol>
             </nav>
 
-            <div class="card">
+            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="posts : ${posts}">
                 <div class="card-header">
-                    Título do Card
+                    <a href="#"><span th:text="${posts.autor}"></span></a>
+                    <span th:text="${posts.data}"></span>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#"><h5 class="card-title" th:text="${posts.titulo}">Titulo</h5></a>
+                    <p class="card-text" th:text="${#strings.abbreviate(posts.texto, 200)}">texto</p>
                 </div>
             </div>
+
         </div>
     </section>
 
