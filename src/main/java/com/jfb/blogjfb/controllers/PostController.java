@@ -50,7 +50,7 @@ public class PostController {
     @PostMapping("/newpost")
     public ModelAndView savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            // attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
+            attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
             return new ModelAndView("redirect:/posts/newpost");
         }
         post.setData(LocalDate.now());
