@@ -19,13 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
-@RequestMapping("/posts")
 public class PostController {
 
     @Autowired
     private PostService service;
 
-    @RequestMapping
+    @RequestMapping("/posts")
     public ModelAndView getPosts() {
         ModelAndView mv = new ModelAndView("posts");
         List<Post> posts = service.findAll();
@@ -33,7 +32,7 @@ public class PostController {
         return mv;
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "posts/{id}")
     public ModelAndView getPostDetails(@PathVariable("id") Integer id) {
         ModelAndView mv = new ModelAndView("postDetails");
         Post post = service.findById(id);
